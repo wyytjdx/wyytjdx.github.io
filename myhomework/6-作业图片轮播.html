@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin:0;
+			padding: 0;
+		}
+		img{
+			width: 600px;
+			height: 370px;
+		}
+		ul li{
+			list-style: none;
+			float: left;
+			width: 20px;
+			height: 20px;
+			border: 1px solid red;
+			line-height: 20px;
+			text-align: center;
+			background-color: yellow;
+		}
+		ul .active{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<img src="image/0.jpg" alt="">
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+	<script>
+		var oimg = document.querySelector("img");
+		var oli = document.querySelectorAll("li");
+
+		var aimg=["image/0.jpg","image/1.jpg","image/2.jpg","image/3.jpg"];
+		for(i=0;i<oli.length;i++){
+			oli[i].onclick = (function(x){
+				return function(){
+					oimg.src = aimg[x];
+	 				addclass(this,"active")
+	 				var t = sibling(this);
+	 				// removeclass(t,"active");
+	 				for(var i=0;i<t.length;i++){
+	 					removeclass(t[i],"active");
+	 				}
+				}
+			})(i)
+		}
+
+
+		function addclass(x,y){
+			if(x.className==""){
+				x.className=y;
+			}else{
+				var yuan = x.className;
+				x.className = yuan +" "+y;
+			}
+		}
+
+		// function removeclass(x,y){
+		// 	var name = x;
+		// 	for(i=0;i<name.length;i++){
+		// 		var cla = name[i].className
+		// 		if(cla==y){
+		// 			name[i].className = "";
+		// 		}
+		// 	}	
+		// }
+
+		function removeclass(x,y){
+			var abox = x.className
+			var arr = abox.split(" ")
+			console.log(arr)
+			var narr = new Array();
+			for(var i=0;i<arr.length;i++){
+				if(y!=arr[i]){
+					narr.push(arr[i]);              /*push() 方法可向数组的末尾添加一个或多个元素，并返回新的长度。*/
+				}
+			}
+			x.className=narr.join(" ");
+		}
+
+		function sibling(x){
+			var arr = x.parentNode.children;
+			var narr = new Array();
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]!=x){
+					narr.push(arr[i]);
+				}
+			}
+			return narr;
+		}
+	</script>
+</body>
+</html>

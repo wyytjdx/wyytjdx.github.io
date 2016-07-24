@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<div class="show">
+			<input type="text">
+		</div>
+		<div class="num">
+			<input type="button" value="0">
+			<input type="button" value="1">
+			<input type="button" value="2">
+			<input type="button" value="3">
+			<input type="button" value="4">
+			<input type="button" value="5">
+			<input type="button" value="6">
+			<input type="button" value="7">
+			<input type="button" value="8">
+			<input type="button" value="9">
+		</div>
+		<div class="sign">
+			<input type="button" value="+">
+			<input type="button" value="-">
+			<input type="button" value="*">
+			<input type="button" value="/">		
+		</div>
+		<div class="dd">
+			<input type="button" value="=">
+			<input type="button" value="AC">
+		</div>
+	</form>
+
+
+
+	<script src="script/jquery.js"></script>
+	<script>
+		var num1 = "";    /*全局变量*/
+		var num2 = "";
+		var sign = "";		
+		$(".num input").click(function(){
+			if(sign ==""){
+				num1 = num1 + $(this).val();
+				$(".show input").val(num1);
+			}else{
+				num2 = num2 + $(this).val();
+				$(".show input").val(num2);
+			}			
+		})
+		$(".sign input").click(function(){
+			sign = $(this).val();	
+		})
+		$(".dd input").click(function(){
+			var d = $(this).val();
+			var value = "";   /*局部变量，只在一个事件里！*/
+			if(d == "="){
+				switch(sign){
+		    		case "+":value = Number(num1) + Number(num2);break;
+		    		case "-":value = Number(num1) - Number(num2);break;
+		    		case "*":value = Number(num1) * Number(num2);break;
+		    		case "/":value = Number(num1) / Number(num2);break;
+		    	}
+				$(".show input").val(value);
+			}else{
+				num1 = "";   /*不能写var！！！*/
+				num2 = "";
+				sign = "";
+				$(".show input").val("");
+			 }		
+		})
+	</script>
+</body>
+</html>

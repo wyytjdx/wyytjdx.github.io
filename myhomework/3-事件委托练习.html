@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<input id="txt" type="text">
+		<input id="but" type="button" value="添加">
+	</form>
+	<h2>你最喜欢的颜色：</h2>
+	<ul id="list">
+		<li>红<span>   删除</span></li>
+		<li>橙<span>   删除</span></li>
+		<li>黄<span>   删除</span></li>
+		<li>绿<span>   删除</span></li>
+		<li>青<span>   删除</span></li>
+	</ul>
+
+	<script>
+		var oul = document.querySelector("#list")
+		var obut = document.querySelector("#but")
+		var otxt = document.querySelector("#txt")
+		var ospan = document.querySelectorAll("span");
+		obut.onclick = function(){
+			var value = otxt.value;
+			// console.log(value)
+			var del = "    删除";/*(=)span.innerHTML = "  删除"
+								span.className = "del"*/
+			if(value!=""){
+				var delstr = document.createTextNode(del);
+				var span = document.createElement("span")
+				span.appendChild(delstr);
+				// var strtxt = document.createTextNode(value);/*创建一个文本节点*/
+				var oli = document.createElement("li");/*创建一个元素节点*/
+				oli.innerHTML=value;   /*只是替换该文本节点*/
+				// oli.appendChild(strtxt);/*给元素添加文本节点*/
+				oli.appendChild(span);
+				oul.appendChild(oli);/*给父元素添加子元素节点*/
+				otxt.value = "";/*把输入的内容清空*/
+			}else{
+				alert("输入不能为空！")
+			}
+		}	
+		oul.addEventListener("click",function(event){
+			var a = event.target;
+			if(a.tagName=="SPAN"){  /*获取标签名，必须大写.如果不写判断，当点击其他时会报错！*/
+				this.removeChild(a.parentNode);
+			}
+				
+		},true)	/*真假都可以*/
+	</script>
+</body>
+</html>

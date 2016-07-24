@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0px;
+		}
+		#box img{
+			width: 380px;
+			height: 200px;
+	
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="box">
+		<img src="image/0.jpg" alt="">
+		<img src="image/1.jpg" alt="">
+		<img src="image/2.jpg" alt="">
+	</div>
+    
+
+
+
+	<script src="script/jquery.js"></script>
+	<script>
+
+		$("#box img").mouseenter(function(){
+			var ind = $(this).index();
+			var sr = "image/"+ind+".jpg";
+			$("#box").append('<img id="id" src=' + sr + ">");		
+		})
+
+
+ 	    $("#box img").mousemove(function(event){	
+			var x = event.pageX;
+			var y = event.pageY;
+			$("#box #id").css({"position":"absolute","left":x+10,"top":y+10,"width":"700px","height":"400px"})
+		})
+
+
+		$("#box img").mouseleave(function(){
+			$("#box #id").remove("");
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p></p>
+	<span id="shi"></span>:
+	<span id="fen"></span>:
+	<span id="miao"></span>
+	<script src="script/jquery.js"></script>
+	<script>
+		function fun(){
+			var today = new Date();
+			$("p").text(today);
+			var hour = today.getHours();
+			$("#shi").text(hour);
+			var minutes = today.getMinutes();
+			$("#fen").text(minutes);
+			var seconds = today.getSeconds();
+			$("#miao").text(seconds);
+		}
+
+		setInterval(fun,1000);
+	</script>
+</body>
+</html>
