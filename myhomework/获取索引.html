@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<script>
+		// var fun = function(){
+		// 	alert("hello")
+		// 	return "world";
+		// }
+		// console.log(fun())
+
+
+
+		var alist = document.querySelectorAll("li");
+		for(i=0;i<alist.length;i++){
+			alist[i].onclick = (function(x){
+				return function(){
+					alert(x);         /*如果不返回函数他就会立刻执行里面的内容，而不是等到点击鼠标事件时才执行，把这个函数赋值给事件，当事件执行时就会执行该函数！*/
+				}
+			})(i)
+		};
+
+
+	</script>
+</body>
+</html>
