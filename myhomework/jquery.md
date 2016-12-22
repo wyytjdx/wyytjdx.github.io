@@ -1,12 +1,12 @@
 ```
-## 选择器$("选择器")
-### id class element *
+##选择器$("选择器")
+###id class element *
 
-## 事件
-### click
-### mouseenter
-### mouseleave
-### mousemove
+##事件
+###click
+###mouseenter
+###mouseleave
+###mousemove
 ### mouseover
 ### mouseout
 ### blur
